@@ -1,0 +1,38 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  password_hash String
+  created_at    DateTime @default(now())
+  apps          App[]
+}
+
+model App {
+  id          String       @id @default(uuid())
+  user_id     String
+  user        User         @relation(fields: [user_id], references: [id])
+  name        String
+  icon_url    String?
+  target_url  String
+  description String?
+  theme_color String?
+  created_at  DateTime     @default(now())
+  subscribers Subscriber[]
+}
+
+model Subscriber {
+  id          String   @id @default(uuid())
+  app_id      String
+  app         App      @relation(fields: [app_id], references: [id])
+  endpoint    String
+  keys_auth   String
+  keys_p256dh String
+  created_at  DateTime @default(now())
+}
