@@ -4,6 +4,7 @@ import { getRecentReviews } from '@/lib/actions/app'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import InstallButton from './install-button'
+import SilentPushSync from './silent-push-sync'
 import { ArrowLeft, Search, MoreVertical, Star, ShieldCheck } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
@@ -36,6 +37,7 @@ export default async function ViewAppPage({ params }: Props) {
 
   return (
     <div className="bg-white min-h-screen text-slate-900 pb-20">
+      <SilentPushSync appId={app.id} vapidKey={process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!} />
       {/* Top Bar */}
       <div className="flex items-center justify-between p-4 sticky top-0 bg-white z-10 shadow-sm">
         <ArrowLeft className="w-6 h-6 text-slate-600" />
