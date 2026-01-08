@@ -17,7 +17,7 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Kibo Raffle", // Ganti dengan nama aplikasi Anda
   description: "Aplikasi Raffle Seru",
-  manifest: "/copy/manifest.json", // Wajib menyertakan nama repo
+  manifest: "/copy/public/manifest.json", // Wajib menyertakan nama repo
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
