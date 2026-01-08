@@ -9,7 +9,7 @@ async function main() {
   console.log('\n--- Apps ---')
   const apps = await prisma.app.findMany()
   console.log(`Total Apps: ${apps.length}`)
-  apps.forEach(app => console.log(`- ${app.name} (${app.id})`))
+  apps.forEach((app: any) => console.log(`- ${app.name}`))
 
   console.log('\n--- Subscriptions ---')
   const subs = await prisma.pushSubscription.findMany()
